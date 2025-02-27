@@ -1,0 +1,706 @@
+/* Variabili di Stile */
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --primary-color: #2c2c2c;
+  --secondary-color: #c49a6c;
+  --bg-light: #f8f8f8;
+  --text-color: #333;
+  --font-family: 'Montserrat', sans-serif;
+}
+
+/* Effetto evidenziazione al passaggio del cursore */
+::selection {
+  background-color: #c49a6c; /* Oro elegante */
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Effetto personalizzato per link */
+a::selection {
+  background-color: #c49a6c; /* Marrone scuro */
+  color: white;
+}
+
+strong {
+  color: #c49a6c;
+}
+
+/* Bottone Torna Su */
+.scroll-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #c49a6c; /* Oro elegante */
+  color: white;
+  font-size: 2rem;
+  text-decoration: none;
+  padding: 12px 16px;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  z-index: 999;
+  font-weight: bold;
+}
+
+/* Effetto hover */
+.scroll-top:hover {
+  background-color: #2c2c2c; /* Marrone scuro */
+  transform: scale(1.1);
+}
+
+/* Mostra la freccia quando si scorre giù */
+.scroll-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Reset e Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--bg-light);
+  line-height: 1.6;
+}
+  
+/* Container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+  
+/* Header */
+/* Navbar */
+.navbar {
+  background-color: #2c2c2c;
+  color: #c49a6c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo */
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  font-family: 'Georgia', serif;
+}
+
+/* Menu Desktop */
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin: 0 15px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #c49a6c;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+/* Icona Menu per Mobile */
+.menu-icon {
+  display: none;
+  font-size: 2rem;
+  color: #c49a6c;
+  cursor: pointer;
+}
+
+/* Navbar Responsive */
+@media screen and (max-width: 768px) {
+  .navbar {
+      padding: 15px 5%;
+  }
+
+  .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background: #2c2c2c;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out;
+      transform: translateY(-100%);
+  }
+
+  .nav-links.active {
+      display: flex;
+      transform: translateY(0);
+  }
+
+  .nav-links li {
+      margin: 15px 0;
+  }
+
+  .menu-icon {
+      display: block;
+  }
+}
+  
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: url('img/M2_Interni_B42_Sala\ anteriore_006.jpg') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 70px; /* per il fixed header */
+}
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+.hero-content {
+  position: relative;
+  color: #fff;
+  z-index: 1;
+}
+.hero-content h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+.hero-content p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #c49a6c;
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #2c2c2c;
+  transform: scale(1.05);
+}
+
+/* Sezioni */
+.section {
+  padding: 80px 0;
+}
+.section h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: var(--primary-color);
+}
+  
+/* Chi Siamo */
+.chisiamo {
+  padding: 80px 10%;
+  background-color: #f8f5f0;
+  text-align: center;
+}
+
+/* Contenitore con layout flessibile */
+.chisiamo-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  justify-content: center;
+}
+
+/* Testo */
+.chisiamo-text {
+  flex: 1;
+  text-align: left;
+}
+
+/* Titolo */
+.chisiamo h2 {
+  font-size: 2.5rem;
+  color: #c49a6c;
+  margin-bottom: 20px;
+}
+
+/* Paragrafo */
+.chisiamo p {
+  font-size: 1.2rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Immagine */
+.chisiamo-img {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.chisiamo-img img {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Effetto hover */
+.chisiamo-img img:hover {
+  transform: scale(1.05);
+}
+
+/* 🔹 Ottimizzazione per dispositivi mobili */
+@media screen and (max-width: 768px) {
+  .chisiamo-container {
+      flex-direction: column;
+      gap: 30px;
+      text-align: center;
+  }
+
+  .chisiamo-text {
+      text-align: center;
+  }
+
+  .chisiamo h2 {
+      font-size: 2rem;
+  }
+
+  .chisiamo p {
+      font-size: 1.1rem;
+  }
+
+  .chisiamo-img img {
+      max-width: 90%;
+  }
+}
+  
+/* Servizi */
+.servizi {
+  background-color: #f8f5f0;
+  padding: 80px 10%;
+  text-align: center;
+}
+
+.servizi-container h2 {
+  font-size: 2.5rem;
+  color: #c49a6c;
+  margin-bottom: 20px;
+}
+
+.servizi-container p {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 40px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Layout dei servizi con migliore disposizione */
+.servizi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 colonne fisse su desktop */
+  gap: 30px;
+  justify-items: center;
+}
+
+/* Stile per ogni singolo servizio */
+.servizio {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  max-width: 350px; /* Limita la larghezza per un design più pulito */
+  text-align: center;
+}
+
+.servizio:hover {
+  transform: scale(1.05);
+}
+
+.servizio i {
+  font-size: 2.5rem;
+  color: #c49a6c;
+  margin-bottom: 15px;
+}
+
+.servizio h3 {
+  font-size: 1.5rem;
+  color: #c49a6c;
+  margin-bottom: 10px;
+}
+
+.servizio p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Responsività per tablet */
+@media (max-width: 992px) {
+  .servizi-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 colonne su tablet */
+  }
+}
+
+/* Responsività per mobile */
+@media (max-width: 600px) {
+  .servizi-grid {
+    grid-template-columns: repeat(1, 1fr); /* 1 colonna su mobile */
+  }
+}
+
+/* Prenotazione */
+
+.prenotazione {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+              url('img/36\ -\ Stuzzichini\ e\ aperitivo\ 001.jpg') center/cover no-repeat;
+  text-align: center;
+  padding: 100px 10%;
+  color: white;
+}
+
+.prenotazione-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-family: 'Georgia', serif;
+}
+
+.prenotazione-container p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+}
+
+.btn-prenota {
+  display: inline-block;
+  background-color: #c49a6c;
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.btn-prenota:hover {
+  background-color: #2c2c2c;
+  transform: scale(1.05);
+}
+  
+/* Form Contatti */
+.contattaci {
+  background-color: #f8f5f0;
+  padding: 80px 10%;
+  text-align: center;
+}
+
+/* Contenitore flessibile */
+.contattaci-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+/* Info di contatto */
+.contattaci-info {
+  flex: 1;
+  text-align: left;
+}
+
+.phone-link, .email-link {
+  color: #c49a6c; /* Colore elegante */
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.phone-link:hover, .email-link:hover {
+  color: #fff; /* Cambia colore al passaggio del mouse */
+  text-decoration: underline;
+}
+
+.email-link {
+  color: #c49a6c; /* Colore elegante */
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.email-link:hover {
+  color: #2c2c2c; /* Cambia colore al passaggio del mouse */
+  text-decoration: underline;
+}
+
+/* Titolo */
+.contattaci h2 {
+  font-size: 2.5rem;
+  color: #c49a6c;
+  margin-bottom: 20px;
+}
+
+/* Dettagli di contatto */
+.contact-details p {
+  font-size: 1.2rem;
+  color: #444;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+/* Icone dei dettagli */
+.contact-details i {
+  margin-right: 10px;
+  color: #c49a6c;
+  font-size: 1.5rem;
+}
+
+/* Icone social */
+.social-icons {
+  margin-top: 20px;
+}
+
+.social-icons a {
+  color: #c49a6c;
+  font-size: 1.8rem;
+  margin-right: 15px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #a3774d;
+}
+
+/* Modulo di contatto */
+.contattaci-form {
+  flex: 1;
+  text-align: left;
+}
+
+/* Stile del form */
+.contattaci-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Campi input e textarea */
+.contattaci-form input, 
+.contattaci-form textarea {
+  width: 100%;
+  max-width: 500px;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 2px solid #c49a6c;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+/* Area di testo più grande */
+.contattaci-form textarea {
+  height: 120px;
+}
+
+/* Bottone di invio */
+.contattaci-form button {
+  background-color: #c49a6c;
+  color: white;
+  padding: 12px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contattaci-form button:hover {
+  background-color: #2c2c2c;
+}
+
+/* Mappa */
+.map-container {
+  margin-top: 50px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* 🔹 Ottimizzazione per dispositivi mobili */
+@media screen and (max-width: 768px) {
+  .contattaci-container {
+      flex-direction: column;
+      text-align: center;
+  }
+
+  .contattaci-info {
+      text-align: center;
+  }
+
+  .contact-details p {
+      justify-content: center;
+  }
+
+  .contattaci-form {
+      text-align: center;
+  }
+
+  .contattaci-form form {
+      align-items: center;
+  }
+
+  .contattaci-form input, 
+  .contattaci-form textarea {
+      max-width: 90%;
+  }
+}
+  
+/* Footer */
+.footer {
+  background-color: #2c2c2c;
+  color: #fff;
+  padding: 50px 10%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 200px;
+}
+
+.footer h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #c49a6c;
+}
+
+.footer p {
+  font-size: 1rem;
+  color: #bbb;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer ul li {
+  margin-bottom: 10px;
+}
+
+.footer ul li a {
+  text-decoration: none;
+  color: #bbb;
+  transition: color 0.3s ease;
+}
+
+.footer ul li a:hover {
+  color: #c49a6c;
+}
+
+.social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.social-icons a {
+  color: #c49a6c;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #fff;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #444;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 0.9rem;
+  color: #aaa; /* Colore discreto */
+}
+
+.footer-link {
+  color: #c49a6c; /* Colore marrone elegante */
+  text-decoration: none;
+  margin-left: 5px;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+  color: #fff; /* Cambia colore quando passi sopra */
+  text-decoration: underline;
+}
+  
+/* Responsive */
+@media (max-width: 768px) {
+  .content-grid {
+    flex-direction: column;
+  }
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-logo {
+      margin-bottom: 15px;
+  }
+  .footer-links {
+      margin-bottom: 15px;
+  }
+}
