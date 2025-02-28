@@ -9,10 +9,74 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="img/Logo2.png" type="image/x-icon">
-    <script defer src="script.js"></script>
+    <script defer src="cookie.js"></script>
 </head>
 <body>
-    <a href="#" id="scrollTop" class="scroll-top">⬆</a>   
+    <div id="preloader">
+        <div class="preloader-content">
+            <i class="fas fa-glass-martini-alt glass left"></i>
+            <i class="fas fa-glass-martini-alt glass right"></i>
+            <div class="sparkles"></div>
+        </div>
+        <!--<p id="loading-text">Benvenuto al B42 Bistrot</p>-->
+    </div>    
+    
+    <div id="progress-bar"></div>
+
+    <button id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Banner Cookie -->
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>
+                <i class="fas fa-cookie-bite"></i> Questo sito utilizza cookie per migliorare l'esperienza utente e analizzare il traffico. Scegli se accettarli tutti o personalizzare le preferenze.  
+                <a href="privacy.html">Leggi la Privacy Policy</a>.
+            </p>
+            <div class="cookie-buttons">
+                <button id="accept-all-cookies">Accetta Tutti</button>
+                <button id="customize-cookies">Personalizza</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modale Personalizzazione Cookie -->
+    <div id="cookie-settings" class="cookie-settings">
+        <div class="cookie-modal">
+            <h2>Gestisci Preferenze Cookie</h2>
+            <p>Scegli quali cookie vuoi attivare. I cookie necessari sono obbligatori per il funzionamento del sito.</p>
+
+            <div class="cookie-category">
+                <label><input type="checkbox" id="necessary" disabled checked> <strong>Necessari</strong> (Sempre attivi)</label>
+                <p>Questi cookie sono essenziali per il corretto funzionamento del sito e non possono essere disattivati.</p>
+            </div>
+
+            <div class="cookie-category">
+                <label><input type="checkbox" id="analytics"> <strong>Analitici</strong></label>
+                <p>Ci aiutano a capire come gli utenti navigano il sito e migliorare la loro esperienza.</p>
+            </div>
+
+            <div class="cookie-category">
+                <label><input type="checkbox" id="marketing"> <strong>Marketing</strong></label>
+                <p>Utilizzati per offrirti pubblicità personalizzata e contenuti mirati.</p>
+            </div>
+
+            <div class="cookie-category">
+                <label><input type="checkbox" id="functional"> <strong>Funzionali</strong></label>
+                <p>Migliorano le funzionalità del sito, come la memorizzazione delle preferenze utente.</p>
+            </div>
+
+            <div class="cookie-modal-buttons">
+                <button id="save-cookie-settings">Salva Preferenze</button>
+                <button id="accept-all">Accetta Tutti</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="cookie-settings-btn">
+        <i class="fas fa-cookie-bite"></i> Impostazioni Cookie
+    </button>    
 
     <header>
         <nav class="navbar">
@@ -187,23 +251,38 @@
             </div>
         </div>
 
-        <!-- Copyright -->
+        <!-- Copyright e Credit -->
         <div class="footer-bottom">
-            <p>© 2025 B42 Bistrot - Tutti i diritti riservati.  
-                <a href="privacy.html" class="footer-link">Informativa sulla Privacy</a> 
+            <p>© 2025 B42 Bistrot - Tutti i diritti riservati - P.VA "Inserire"
+                <a href="privacy.html" class="footer-link">Informativa sulla Privacy</a>
             </p>
-        </div>        
+            <p class="developer">Developed by <a href="https://giospezia.it" target="_blank">GioSpezia</a></p>
+        </div>     
     </footer>
 
     <script>
+        // Preloader
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                document.body.classList.add("loaded");
+            }, 3000); // Il preloader dura 3 secondi
+        });
+
         // Mostra/Nasconde la freccia quando si scorre nella pagina
-        window.addEventListener("scroll", function () {
-            let scrollTop = document.getElementById("scrollTop");
-            if (window.scrollY > 400) {
-                scrollTop.classList.add("show");
-            } else {
-                scrollTop.classList.remove("show");
-            }
+        document.addEventListener("DOMContentLoaded", function () {
+            const backToTopBtn = document.getElementById("back-to-top");
+
+            window.addEventListener("scroll", function () {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add("show"); // Mostra il pulsante con animazione
+                } else {
+                    backToTopBtn.classList.remove("show"); // Nasconde il pulsante se troppo in alto
+                }
+            });
+
+            backToTopBtn.addEventListener("click", function () {
+                window.scrollTo({ top: 0, behavior: "smooth" }); // Scroll morbido verso l'alto
+            });
         });
 
         // Navbar mobile
@@ -214,6 +293,15 @@
             menuIcon.addEventListener("click", function () {
                 navLinks.classList.toggle("active");
             });
+        });
+
+        // Progress Bar
+        document.addEventListener("scroll", function () {
+            let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrollPercentage = (scrollTop / scrollHeight) * 100;
+
+            document.getElementById("progress-bar").style.width = scrollPercentage + "%";
         });
     </script>
 </body>
